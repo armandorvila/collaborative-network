@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:references="urn:import:com.armandorv.cnpd.web.client.view.projects.project.references">
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="referencesListConfig">
+		<ui:attributes text="References List" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="newReferenceTabConfig">
+		<ui:attributes text="Add Reference" />
+	</ui:with>
+
+	<!-- ****************************************************************** -->
+	
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		collapsible="true" addStyleNames="margin-10">
+		
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="30"
+			deferHeight="false" resizeTabs="true" tabWidth="140" shadow="true"
+			addStyleNames="margin-10">
+
+			<!-- *************** Contacts Tab ******************** -->
+			<tabs:child config="{referencesListConfig}">
+				<references:ReferencesListView
+					ui:field="referencesListView" />
+			</tabs:child>
+
+			<!-- *************** Requests Tab ******************** -->
+			<tabs:child config="{newReferenceTabConfig}">
+				<references:NewReferenceView ui:field="newReferenceView" />
+			</tabs:child>
+
+		</tabs:TabPanel>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

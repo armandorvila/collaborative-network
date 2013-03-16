@@ -1,0 +1,12 @@
+<!-- remote-ejb-connection was created with cli app see: https://docs.jboss.org/author/display/AS71/EJB+invocations+from+a+remote+server+instance -->
+
+<jboss-ejb-client xmlns="urn:jboss:ejb-client:1.0">
+
+	<!-- Comment all for local deploy. -->
+	<!-- There is a bug in AS7 that if this put bound connection is not avaiable 
+		an error is thrown : Failed to start service jboss.ejb3.dd-based-ejb-client-context -->
+
+	<!-- <client-context> <ejb-receivers> <remoting-ejb-receiver outbound-connection-ref="remote-ejb-connection" 
+		/> </ejb-receivers> </client-context> -->
+
+</jboss-ejb-client>

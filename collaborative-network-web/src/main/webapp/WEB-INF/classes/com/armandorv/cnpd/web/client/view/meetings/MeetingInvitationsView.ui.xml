@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes width="1" height="1" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="view">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="columnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="store" />
+
+	<gxt:ContentPanel headerVisible="false">
+		<container:VerticalLayoutContainer
+			borders="true">
+
+			<container:child layoutData="{verticalData}">
+				<grid:Grid ui:field="grid" cm="{columnModel}"
+					store="{store}" view="{view}" columnReordering="true"
+					borders="false">
+				</grid:Grid>
+
+			</container:child>
+		</container:VerticalLayoutContainer>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

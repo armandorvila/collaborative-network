@@ -1,0 +1,43 @@
+.footer {
+	background: #1D9CC5 url("../images/heading_background.jpg") no-repeat
+		right top;
+	border-top: 1px #4FD9E0 solid;
+	border-bottom: 1px #4FD9E0 solid;
+}
+
+/*Styles bellow are unused by the gxt version*/
+#footerText {
+	margin-top: -0.8;
+	margin-left: 40%;
+	color: #333333;
+	font-size: x-large;
+}
+
+.footer ul {
+	list-style: none;
+	margin-left: 35%;
+	margin-top: -0.8em;
+}
+
+.footer ul li {
+	border-left: 1px solid #DFE8F6;
+	float: left;
+	padding-right: 1em;
+	padding-left: 1em;
+	/* display: block; */
+}
+
+.footer ul li:first-child {
+	border-left: none;
+}
+
+.footer ul a {
+	color: #A7D9E0;
+}
+
+.footer ul a:hover {
+	cursor: pointer;
+	background-color: transparent;
+}
+
+/* ****************************************************** */

@@ -1,0 +1,86 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:cal="urn:import:com.bradrydzewski.gwt.calendar.client"
+	xmlns:date="urn:import:com.google.gwt.user.datepicker.client">
+
+	<ui:style>
+		.datepicker {
+			margin-top: 16%;
+		}
+	</ui:style>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="verticalMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="calendarMargins">
+		<ui:attributes top="0" right="0" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes width="-1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="calendarData">
+		<ui:attributes width="-1" height="-1" margins="{calendarMargins}" />
+	</ui:with>
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		collapsible="true" addStyleNames="margin-10">
+		<g:ScrollPanel>
+
+			<container:VerticalLayoutContainer>
+				<container:child layoutData="{verticalData}">
+
+					<form:FieldSet headingText="State :" collapsible="true">
+
+						<g:HorizontalPanel spacing="10">
+
+							<form:FieldLabel text="Desired milestone ">
+								<form:widget>
+									<form:TextField ui:field="desiredMilestone"
+										text="Any milestone" readOnly="true" enabled="false" />
+								</form:widget>
+							</form:FieldLabel>
+
+
+							<form:FieldLabel text="Last milestone ">
+								<form:widget>
+									<form:ComboBox ui:field="milestonesCombo" triggerAction="ALL" forceSelection="true"  />
+								</form:widget>
+							</form:FieldLabel>
+
+						</g:HorizontalPanel>
+
+					</form:FieldSet>
+
+				</container:child>
+
+				<container:child layoutData="{calendarData}">
+					<form:FieldSet headingText="Milestones :">
+
+						<g:HorizontalPanel spacing="4">
+
+							<date:DatePicker ui:field="datepicker" width="60"
+								styleName="{style.datepicker}" />
+
+							<cal:Calendar ui:field="calendar" height="90" />
+
+						</g:HorizontalPanel>
+
+					</form:FieldSet>
+				</container:child>
+
+			</container:VerticalLayoutContainer>
+		</g:ScrollPanel>
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

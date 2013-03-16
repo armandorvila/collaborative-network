@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+	xmlns:menubar="urn:import:com.armandorv.cnpd.web.client.view.projects.project.resources.menubar"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="treeMargins">
+		<ui:attributes top="10" right="0" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes height="-1" width="-1" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="treeData">
+		<ui:attributes height="-1" width="-1" margins="{treeMargins}" />
+	</ui:with>
+
+	<!-- ************************************************************************** -->
+<g:ScrollPanel>
+	<container:VerticalLayoutContainer>
+
+		<container:child layoutData="{verticalData}">
+			<menubar:ResourcesMenuBar ui:field="menuBar" />
+		</container:child>
+
+		<container:child layoutData="{treeData}">
+			<form:StoreFilterField ui:field="filter" />
+		</container:child>
+
+		<container:child layoutData="{treeData}">
+			<tree:Tree ui:field="tree" />
+		</container:child>
+
+	</container:VerticalLayoutContainer>
+	</g:ScrollPanel>
+
+</ui:UiBinder>

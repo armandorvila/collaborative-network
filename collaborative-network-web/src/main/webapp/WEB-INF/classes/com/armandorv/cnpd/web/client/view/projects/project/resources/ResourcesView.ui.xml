@@ -1,0 +1,82 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+	xmlns:menu="urn:import:com.sencha.gxt.widget.core.client.menu"
+	xmlns:resources="urn:import:com.armandorv.cnpd.web.client.view.projects.project.resources">
+
+
+	<!-- ************************* Margins ***************************************** -->
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+		<ui:attributes top="0" right="0" bottom="0" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="4" right="4" bottom="4" left="4" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="4" right="2" bottom="4" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="eastMargins">
+		<ui:attributes top="4" right="4" bottom="4" left="2" />
+	</ui:with>
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="outerData">
+		<ui:attributes margins="{outerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="24" margins="{northMargins}" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="centerData">
+		<ui:attributes size="1" margins="{centerMargins}"
+			floatable="true" split="true" collapsible="true" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="eastData">
+		<ui:attributes size="300" margins="{eastMargins}"
+			floatable="true" split="true" collapsible="true" />
+	</ui:with>
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false" addStyleNames="margin-10" resize="true">
+
+		<container:SimpleContainer resize="true">
+			<container:child layoutData="{outerData}">
+				<container:BorderLayoutContainer
+					resize="true" ui:field="container" borders="false">
+
+					<container:center layoutData="{centerData}">
+
+						<gxt:ContentPanel headingText="Project resources" resize="true">
+
+							<resources:ResourcesTreeView
+								ui:field="resourcesTreeView" />
+
+						</gxt:ContentPanel>
+					</container:center>
+
+					<container:east layoutData="{eastData}">
+						<gxt:ContentPanel headingText="Free resources"
+							collapsible="true" resize="true">
+							<resources:DraftsTreeView
+								ui:field="draftsTreeView" />
+						</gxt:ContentPanel>
+					</container:east>
+
+				</container:BorderLayoutContainer>
+			</container:child>
+
+		</container:SimpleContainer>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

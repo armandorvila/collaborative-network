@@ -1,0 +1,105 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
+
+	<!-- ************************* Details Data ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="detailsMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="detailsData">
+		<ui:attributes width="1" height="-1" margins="{detailsMargins}" />
+	</ui:with>
+	
+	<!-- ************************* Options Data ***************************************** -->
+		<ui:with type="com.sencha.gxt.core.client.util.Margins" field="optionsMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="optionsData">
+		<ui:attributes width="-1" height="-1" margins="{optionsMargins}" />
+	</ui:with>
+	
+	<!-- ************************* Fields Data ***************************************** -->
+		<ui:with type="com.sencha.gxt.core.client.util.Margins" field="fieldsMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="fieldsData">
+		<ui:attributes width="1" height="-1" margins="{fieldsMargins}" />
+	</ui:with>
+	
+	<!-- ************************* Grid Data ***************************************** -->
+	
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="view">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+	
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="columnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="store" />
+
+	<gxt:Dialog ui:field="detailsDialog" pixelSize="500, 400"
+		headingText="" modal="true" deferHeight="false"
+		bodyStyle="background:#fff;" blinkModal="false">
+
+
+		<container:VerticalLayoutContainer>
+
+			<container:child layoutData="{detailsData}">
+
+				<form:FieldSet headingText="Details">
+
+					<container:VerticalLayoutContainer>
+
+						<container:child layoutData="{fieldsData}">
+							<form:FieldLabel text="Title">
+								<form:widget>
+									<form:TextField enabled="false" ui:field="title" />
+								</form:widget>
+							</form:FieldLabel>
+						</container:child>
+
+						<container:child layoutData="{fieldsData}">
+							<form:FieldLabel text="Description">
+								<form:widget>
+									<form:TextArea enabled="false" ui:field="description" />
+								</form:widget>
+							</form:FieldLabel>
+						</container:child>
+
+					</container:VerticalLayoutContainer>
+
+				</form:FieldSet>
+
+			</container:child>
+
+			<container:child layoutData="{optionsData}">
+				
+				<form:FieldSet headingText="Options">
+				
+					<grid:Grid ui:field="grid" cm="{columnModel}"
+						store="{store}" view="{view}" loadMask="false" columnReordering="true"
+						borders="false" />
+				
+				</form:FieldSet>
+		
+			</container:child>
+
+		</container:VerticalLayoutContainer>
+
+	</gxt:Dialog>
+
+</ui:UiBinder>

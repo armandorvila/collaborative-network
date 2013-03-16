@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
+
+
+	<!-- ************************* Margins ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="gridLeftHorizontalMargins">
+		<ui:attributes top="5" right="5" bottom="5" left="5" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="gridRigthHorizontalMargins">
+		<ui:attributes top="5" right="5" bottom="5" left="0" />
+	</ui:with>
+
+
+	<!-- ************************* Layout Data ***************************************** -->
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="gridLeftLayoutData">
+		<ui:attributes width=".5" height="-1"
+			margins="{gridLeftHorizontalMargins}" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="gridRigthLayoutData">
+		<ui:attributes width=".5" height="-1"
+			margins="{gridRigthHorizontalMargins}" />
+	</ui:with>
+
+	<gxt:Window headingText="Add contacts :"  resizable="false"
+	ui:field="addWindow" bodyStyle="background:transparent;"
+		resize="false" height="480" width="410">
+
+
+		<container:HorizontalLayoutContainer>
+
+			<container:child layoutData="{gridLeftLayoutData}">
+				<gxt:ContentPanel headingText="User contacts :" height="400" width="400">
+					<grid:Grid ui:field="allContactsGrid" />
+				</gxt:ContentPanel>
+			</container:child>
+
+			<container:child layoutData="{gridRigthLayoutData}">
+				<gxt:ContentPanel headingText="Project members :" height="400" width="400">
+					<grid:Grid ui:field="addedContactsGrid" />
+				</gxt:ContentPanel>
+			</container:child>
+
+		</container:HorizontalLayoutContainer>
+
+		<gxt:button>
+			<button:TextButton text="Cancel" ui:field="cancelButton" />
+		</gxt:button>
+
+		<gxt:button>
+			<button:TextButton text="Accept" ui:field="acceptButton" />
+		</gxt:button>
+
+	</gxt:Window>
+
+
+</ui:UiBinder>

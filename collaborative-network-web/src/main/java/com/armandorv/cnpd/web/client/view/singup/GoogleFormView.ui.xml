@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="textFieldMargins">
+		<ui:attributes top="30" right="10" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
+		<ui:attributes width="1" height="-1" margins="{textFieldMargins}" />
+	</ui:with>
+
+	<gxt:ContentPanel headerVisible="false" bodyBorder="false" borders="false" bodyStyle="background:none;padding: 5px"
+		resize="true" height="500">
+		
+		
+			<form:FieldSet ui:field="googleFieldSet" headingText="Google Information">
+			<g:ScrollPanel>
+				<container:VerticalLayoutContainer>
+
+					<container:child layoutData="{verticalLayoutData}">
+						<form:FieldLabel text="Google account " labelWidth="140" labelSeparator=" *:">
+							<form:widget>
+								<form:TextField ui:field="googleAccount"
+									toolTip="Any valid google account." />
+							</form:widget>
+						</form:FieldLabel>
+					</container:child>
+
+					<container:child layoutData="{verticalLayoutData}">
+						<form:FieldLabel text="Google password " labelWidth="140" labelSeparator=" *:">
+							<form:widget>
+								<form:PasswordField ui:field="googlePassword"
+									allowBlank="true" toolTip="The correct password for the given google account." />
+							</form:widget>
+						</form:FieldLabel>
+					</container:child>
+
+					<container:child layoutData="{verticalLayoutData}">
+						<form:FieldLabel text="Repeat password "
+							labelWidth="140" labelSeparator=" *:">
+							<form:widget>
+								<form:PasswordField ui:field="googlePasswordConfirmation"
+									allowBlank="true" autoValidate="true" toolTip="Same password above." />
+							</form:widget>
+						</form:FieldLabel>
+					</container:child>
+
+				</container:VerticalLayoutContainer>
+</g:ScrollPanel>
+			</form:FieldSet>
+		
+		
+		
+		<gxt:button>
+			<button:TextButton text="Cancel" ui:field="cancelButton" toolTip="Cancel singUp process."/>
+		</gxt:button>
+
+		<gxt:button>
+			<button:TextButton text="Continue" ui:field="continueButton" toolTip="Continue singUp process."/>
+		</gxt:button>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+@import "global.css";
+
+@import "footer.css";
+
+@import "header.css";
+
+@import "infopanel.css";
+
+@import "centralpanel.css";
+
+@import "chatpanel.css";
+
+@import "news.css";
+
+@import "messages.css";
+
+@import "contacts.css";
+
+@import "projects.css";
+
+@import "project.css";

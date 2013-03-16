@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:disc="urn:import:com.armandorv.cnpd.web.client.view.projects.project.discussions"
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client">
+
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="listTabConfig">
+		<ui:attributes text="Discussions List" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="newTabConfig">
+		<ui:attributes text="Create Discussion" />
+	</ui:with>
+
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		resize="true" addStyleNames="margin-10">
+
+		<!-- ******** A second Tab Panel inside contacts section*********** -->
+
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="30" tabWidth="240" shadow="true" bodyBorder="false"
+			borders="false" addStyleNames="margin-10" minTabWidth="240">		
+			<!-- *************** List Tab ******************** -->
+
+			<tabs:child config="{listTabConfig}">
+				<disc:DiscussionsListView ui:field="discussionsListView" />
+			</tabs:child>
+			
+			<!-- *************** New Tab ******************** -->
+			<tabs:child config="{newTabConfig}">
+				<disc:NewDiscussionView ui:field="newDiscussionView" />
+			</tabs:child>
+			
+		</tabs:TabPanel>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

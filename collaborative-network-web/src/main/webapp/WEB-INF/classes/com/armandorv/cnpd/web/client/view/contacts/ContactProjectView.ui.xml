@@ -1,0 +1,62 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:projectinfo="urn:import:com.armandorv.cnpd.web.client.view.projects.project.info">
+
+	<ui:style>
+		.sep {
+			margin-top: 20px;
+		}
+	</ui:style>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="treeMargins">
+		<ui:attributes top="10" right="0" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="treeData">
+		<ui:attributes height="-1" width="-1" margins="{treeMargins}" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="homeTabConfig">
+		<ui:attributes text="Project" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="resourcesTabConfig">
+		<ui:attributes text="Resources" />
+	</ui:with>
+
+	<gxt:Window ui:field="window" pixelSize="800,480" modal="true"
+		minHeight="200" minWidth="400" deferHeight="false" borders="false"
+		headingText="Project View" bodyBorder="false" maximizable="true">
+
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="20"
+			tabWidth="140" addStyleNames="margin-10">
+
+			<tabs:child config="{homeTabConfig}">
+				<projectinfo:ProjectInfoView ui:field="projectInfo" />
+			</tabs:child>
+
+			<tabs:child config="{resourcesTabConfig}">
+
+				<container:VerticalLayoutContainer>
+					<container:child layoutData="{treeData}">
+						<form:StoreFilterField ui:field="filter" />
+					</container:child>
+
+					<container:child layoutData="{treeData}">
+						<tree:Tree ui:field="projectResourcesTree" />
+					</container:child>
+				</container:VerticalLayoutContainer>
+			</tabs:child>
+
+		</tabs:TabPanel>
+	</gxt:Window>
+
+</ui:UiBinder>

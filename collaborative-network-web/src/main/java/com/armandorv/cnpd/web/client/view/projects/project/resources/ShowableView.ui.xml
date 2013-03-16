@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client">
+
+
+	<gxt:Window ui:field="window" headingText="Document Viewer"
+		modal="true" addStyleNames="margin-10" resize="true" resizable="false"
+		height="500" width="1000">
+		<gxt:ContentPanel resize="true" headerVisible="false">
+
+			<g:Frame ui:field="resource" height="500" width="1000" />
+
+		</gxt:ContentPanel>
+	</gxt:Window>
+
+</ui:UiBinder> 

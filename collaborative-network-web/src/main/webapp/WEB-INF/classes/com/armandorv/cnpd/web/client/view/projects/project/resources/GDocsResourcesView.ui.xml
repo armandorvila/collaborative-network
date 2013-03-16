@@ -1,0 +1,46 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="verticalMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes width="-1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="view">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="columnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="store" />
+
+	<gxt:Dialog ui:field="dialog" pixelSize="500, 400"
+		headingText="" modal="true" deferHeight="false" bodyStyle="background:#fff;"
+		blinkModal="false">
+		
+		<container:VerticalLayoutContainer borders="true">
+			
+			<container:child layoutData="{verticalData}">
+
+				<form:FieldSet headingText="Google Docs ">
+					<grid:Grid ui:field="grid" cm="{columnModel}" store="{store}"
+						view="{view}" borders="true" />
+				</form:FieldSet>
+		
+			</container:child>
+
+		</container:VerticalLayoutContainer>
+
+	</gxt:Dialog>
+
+</ui:UiBinder>	

@@ -1,0 +1,40 @@
+.Cotnacts {
+	
+}
+
+.ContactsPanel { /* padding:2%; */
+	/* width: 62%;
+	height: 70%; */
+	margin-left: 5%;;
+}
+
+.Search {
+	margin-left: 5%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+
+.SearchButton {
+	
+}
+
+.NewContactButton{
+	margin-left: 5%;
+	margin-top: 6%;
+}
+
+.ContactsGxtTest {
+	background: #d0e4f6;
+}
+
+.ContactCell {
+	margin: 1%;
+	width: 90%;
+	background-color: transparent;
+}
+
+.Transparent {
+	background-color: transparent;
+}
+
+

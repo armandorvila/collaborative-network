@@ -1,0 +1,23 @@
+.header {
+	background: #1D9CC5 url("../images/heading_background.jpg") no-repeat
+		right top;
+	color: #333333;
+	text-align: left;
+	height: 78px;
+	font-size: x-large;
+	padding-left: 10%;
+	padding-top: 2%;
+	font-family: sans-serif;
+}
+
+.header .logout{
+	float:right;
+	color:white;
+	margin-right:30%;
+	margin-top:30%;
+	font-size:x-small;
+}
+
+
+
+

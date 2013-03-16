@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:meetings="urn:import:com.armandorv.cnpd.web.client.view.meetings">
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="meetingsListTabConfig">
+		<ui:attributes text="Meetings list" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="meetingInvitationsTabConfig">
+		<ui:attributes text="Meeting invitations" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="newMeetingTabConfig">
+		<ui:attributes text="New Meeting" />
+	</ui:with>
+
+	<!-- ****************************************************************** -->
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		deferHeight="false" pixelSize="600, 300" collapsible="false"
+		addStyleNames="margin-10" resize="true">
+
+		<!-- ******** A second Tab Panel inside contacts section*********** -->
+
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="30"
+			deferHeight="false" resizeTabs="true" tabWidth="140" shadow="true"
+			addStyleNames="margin-10">
+
+			<tabs:child config="{meetingsListTabConfig}">
+				<meetings:MeetingsListView ui:field="meetingsListView" />
+			</tabs:child>
+
+			<tabs:child config="{meetingInvitationsTabConfig}">
+				<meetings:MeetingInvitationsView
+					ui:field="meetingInvitationsView" />
+			</tabs:child>
+
+			<tabs:child config="{newMeetingTabConfig}">
+				<meetings:NewMeetingView ui:field="newMeetingView" />
+			</tabs:child>
+
+		</tabs:TabPanel>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

@@ -1,0 +1,49 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="columnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="store" />
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="middleData">
+		<ui:attributes width="1" height="1" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="bottomData">
+		<ui:attributes width="1" height="-1" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="view">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		resize="true" height="401" width="401" collapsible="false" addStyleNames="margin-10">
+
+		<container:VerticalLayoutContainer>
+		
+			<container:child layoutData="{middleData}">
+				<grid:Grid ui:field="grid" cm="{columnModel}" store="{store}"
+					view="{view}" loadMask="false" columnReordering="true" borders="true">
+				</grid:Grid>
+			</container:child>
+
+			<container:child layoutData="{bottomData}">
+				<toolbar:PagingToolBar pageSize="10" ui:field="toolBar" />
+			</container:child>
+
+		</container:VerticalLayoutContainer>
+
+	</gxt:ContentPanel>
+
+
+</ui:UiBinder>

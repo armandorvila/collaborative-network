@@ -1,0 +1,12 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client">
+
+
+	<gxt:Window ui:field="conversationWindow" width="515" resizable="false" 
+		height="405" modal="false" deferHeight="false"
+		borders="false" headerVisible="true" bodyBorder="false" bodyStyle="backround:#fff;"
+		 shadow="true"  />
+
+
+</ui:UiBinder>

@@ -1,0 +1,12 @@
+<!-- Postgres and SVN.KIT are declared as modules of jboss as7. -->
+<jboss-deployment-structure>
+	<deployment>
+		<exclusions>
+		</exclusions>
+
+		<dependencies>
+			<module name="org.tmatesoft.svn" />
+			<module name="org.postgres" />
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure>

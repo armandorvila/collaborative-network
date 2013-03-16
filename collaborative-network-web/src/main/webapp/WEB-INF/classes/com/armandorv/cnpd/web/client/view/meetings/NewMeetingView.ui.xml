@@ -1,0 +1,72 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<ui:style>
+		.rigth {
+			float: right;
+		}
+	</ui:style>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="verticalMargins">
+		<ui:attributes top="20" right="60" bottom="20" left="40" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes width="1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		resize="true" addStyleNames="margin-10">
+
+		<container:VerticalLayoutContainer>
+
+			<container:child layoutData="{verticalData}">
+				<form:FieldLabel text="Title">
+					<form:widget>
+						<form:TextField ui:field="title" allowBlank="false" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+			
+			<container:child layoutData="{verticalData}">
+				<form:FieldLabel text="Place">
+					<form:widget>
+						<form:TextField ui:field="place" allowBlank="false" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalData}">
+				<form:FieldLabel text="Date">
+					<form:widget>
+						<form:DateField ui:field="date" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalData}">
+				<form:FieldLabel text="Description">
+					<form:widget>
+						<form:TextArea ui:field="description" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalData}">
+				<g:FlowPanel>
+					<button:TextButton text="Create" ui:field="create"
+						styleName="{style.rigth}" toolTip="Create a new meeting" />
+				</g:FlowPanel>
+			</container:child>
+
+		</container:VerticalLayoutContainer>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

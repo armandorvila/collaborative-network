@@ -1,0 +1,177 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:chat="urn:import:com.armandorv.cnpd.web.client.view.chat"
+	xmlns:info="urn:import:com.armandorv.cnpd.web.client.view.projects.project.info"
+	xmlns:management="urn:import:com.armandorv.cnpd.web.client.view.projects.project.management"
+	xmlns:resources="urn:import:com.armandorv.cnpd.web.client.view.projects.project.resources"
+	xmlns:references="urn:import:com.armandorv.cnpd.web.client.view.projects.project.references"
+	xmlns:discussions="urn:import:com.armandorv.cnpd.web.client.view.projects.project.discussions"
+	xmlns:milestones="urn:import:com.armandorv.cnpd.web.client.view.projects.project.milestones"
+	xmlns:tasks="urn:import:com.armandorv.cnpd.web.client.view.projects.project.tasks">
+
+	<ui:style>
+		.sep {
+			margin-top: 20px;
+		}
+	</ui:style>
+
+	<!-- ************************* Margins ***************************************** -->
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+		<ui:attributes top="0" right="0" bottom="0" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="westMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="0" right="10" bottom="10" left="10" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="eastMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="southMargins">
+		<ui:attributes top="10" right="0" bottom="0" left="0" />
+	</ui:with>
+
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="outerData">
+		<ui:attributes margins="{outerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="30" margins="{northMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="westData">
+		<ui:attributes size="280" margins="{westMargins}"
+			floatable="true" split="true" collapsible="true" collapsed="true" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="centerData">
+		<ui:attributes margins="{centerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="eastData">
+		<ui:attributes size="300" margins="{eastMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="southData">
+		<ui:attributes size="30" margins="{southMargins}" />
+	</ui:with>
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="homeTabConfig">
+		<ui:attributes text="Project" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="resourcesTabConfig">
+		<ui:attributes text="Resources" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="referencesTabConfig">
+		<ui:attributes text="References" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="discussionsTabConfig">
+		<ui:attributes text="Discussions" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="milestonesTabConfig">
+		<ui:attributes text="Milestones" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="tasksTabConfig">
+		<ui:attributes text="Tasks" />
+	</ui:with>
+
+	<!-- ************************* Border Layout ***************************************** -->
+
+	<!-- Project Window -->
+	<gxt:Window ui:field="window" pixelSize="1100,570" modal="false"
+		minHeight="300" minWidth="1000" deferHeight="false" blinkModal="false"
+		borders="false" headingText="Project View" bodyBorder="false" maximizable="true">
+
+		<container:SimpleContainer>
+			<container:child layoutData="{outerData}">
+				<container:BorderLayoutContainer
+					ui:field="container" borders="false">
+
+					<container:north layoutData="{northData}">
+						<gxt:ContentPanel resize="false" headerVisible="false" />
+					</container:north>
+
+					<container:west layoutData="{westData}">
+						<gxt:ContentPanel headingText="Management" ui:field="managementPanel"
+							collapsible="true" animCollapse="true" hideCollapseTool="true">
+							<management:ManagementView ui:field="managementView" />
+						</gxt:ContentPanel>
+					</container:west>
+
+					<container:east layoutData="{eastData}">
+						<gxt:ContentPanel resize="false" headingText="Project Chat"
+							toolTip="Chat with project members.">
+							<chat:ChatView ui:field="projectChat" />
+						</gxt:ContentPanel>
+					</container:east>
+
+					<container:center layoutData="{centerData}">
+						<tabs:TabPanel ui:field="tabPanel" tabMargin="20"
+							tabWidth="140" addStyleNames="margin-10">
+
+							<tabs:child config="{homeTabConfig}">
+								<info:ProjectInfoView ui:field="info" />
+							</tabs:child>
+
+							<tabs:child config="{resourcesTabConfig}">
+								<resources:ResourcesView ui:field="resourcesView" />
+							</tabs:child>
+
+							<tabs:child config="{referencesTabConfig}">
+								<references:ReferencesView ui:field="referencesView" />
+							</tabs:child>
+
+							<tabs:child config="{discussionsTabConfig}">
+								<discussions:DiscussionsView
+									ui:field="discussionsView" />
+							</tabs:child>
+
+							<tabs:child config="{milestonesTabConfig}">
+								<milestones:MilestonesView ui:field="scheduleView" />
+							</tabs:child>
+
+							<tabs:child config="{tasksTabConfig}">
+								<tasks:TasksView ui:field="tasksView" />
+							</tabs:child>
+						</tabs:TabPanel>
+					</container:center>
+
+					<container:south layoutData="{southData}">
+						<gxt:ContentPanel resize="false" headerVisible="false">
+
+						</gxt:ContentPanel>
+					</container:south>
+
+				</container:BorderLayoutContainer>
+			</container:child>
+		</container:SimpleContainer>
+	</gxt:Window>
+
+
+</ui:UiBinder>

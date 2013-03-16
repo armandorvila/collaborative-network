@@ -1,0 +1,11 @@
+<!-- https://docs.jboss.org/author/display/AS71/Class+Loading+in+AS7 -->
+<jboss-deployment-structure>
+	<deployment>
+		<exclusions>
+		</exclusions>
+		<dependencies>
+			<module name="org.tmatesoft.svn" />
+			<module name="org.postgres" />
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure>

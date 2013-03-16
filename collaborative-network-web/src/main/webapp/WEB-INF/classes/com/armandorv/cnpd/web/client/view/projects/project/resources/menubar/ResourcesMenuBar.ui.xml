@@ -1,0 +1,53 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+	xmlns:menu="urn:import:com.sencha.gxt.widget.core.client.menu"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+	<ui:style>
+		.menuBorder {
+			border-top: none;
+		}
+	</ui:style>
+
+	<menu:MenuBar borders="true" addStyleNames="{style.menuBorder}">
+		<menu:MenuBarItem text="Create">
+			<menu:menu>
+				<menu:Menu>
+					<menu:MenuItem text="Create Folder" ui:field="createFoler" />
+					<menu:MenuItem text="Create Untyped" ui:field="createUntyped" />
+					<menu:MenuItem text="Create File" ui:field="createFile" />
+					<menu:MenuItem text="Create Document" ui:field="createDocument" />
+
+				</menu:Menu>
+			</menu:menu>
+		</menu:MenuBarItem>
+
+		<menu:MenuBarItem text="Upload">
+			<menu:menu>
+				<menu:Menu>
+					<menu:MenuItem text="Upload Folder" ui:field="uploadFoler" />
+					<menu:MenuItem text="Upload File" ui:field="uploadFile" />
+					<menu:MenuItem text="Upload Untyped" ui:field="uploadUntyped" />
+					<menu:MenuItem text="Upload Document" ui:field="uploadDocument" />
+
+				</menu:Menu>
+			</menu:menu>
+		</menu:MenuBarItem>
+
+		<menu:MenuBarItem text="Import">
+			<menu:menu>
+				<menu:Menu>
+					<menu:MenuItem text="Import Folder" ui:field="importFoler" />
+					<menu:MenuItem text="Import File" ui:field="importFile" />
+					<menu:MenuItem text="Import Untyped" ui:field="importUntyped" />
+					<menu:MenuItem text="Import Document" ui:field="importDocument" />
+				</menu:Menu>
+			</menu:menu>
+		</menu:MenuBarItem>
+
+	</menu:MenuBar>
+
+</ui:UiBinder> 

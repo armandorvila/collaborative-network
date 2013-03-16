@@ -1,0 +1,88 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+
+
+	<!-- ************************* Margins ***************************************** -->
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+		<ui:attributes top="20" right="220" bottom="20" left="220" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="0" right="0" bottom="30" left="0" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="0" right="160" bottom="0" left="160" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="southMargins">
+		<ui:attributes top="10" right="0" bottom="0" left="0" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="textFieldMargins">
+		<ui:attributes top="30" right="10" bottom="0" left="10" />
+	</ui:with>
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="outerData">
+		<ui:attributes margins="{outerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="80" margins="{northMargins}" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="centerData">
+		<ui:attributes margins="{centerMargins}" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="southData">
+		<ui:attributes size="40" margins="{southMargins}" />
+	</ui:with>
+
+	<!-- ******************************************************************************** -->
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
+		<ui:attributes width="1" height="-1" margins="{textFieldMargins}" />
+	</ui:with>
+
+	<container:SimpleContainer deferHeight="false">
+		
+		<container:child layoutData="{outerData}">
+			
+			<container:BorderLayoutContainer
+				 ui:field="container" borders="true"
+				shadow="true" deferHeight="false">
+
+				<container:north layoutData="{northData}">
+					<g:HTMLPanel styleName="header">
+						<h1 id="headerText"> Collaborative Network For Projects Development</h1>
+					</g:HTMLPanel>
+				</container:north>
+
+				<container:center layoutData="{centerData}">
+					<gxt:ContentPanel headingText="Sign Up:" ui:field="form" headerVisible="false" borders="false" bodyBorder="false"
+						resize="true" height="500" />
+	
+				</container:center>
+
+				<container:south layoutData="{southData}">
+					<g:HTMLPanel styleName="footer" />
+				</container:south>
+
+			</container:BorderLayoutContainer>
+		
+		</container:child>
+	
+	</container:SimpleContainer>
+
+</ui:UiBinder>

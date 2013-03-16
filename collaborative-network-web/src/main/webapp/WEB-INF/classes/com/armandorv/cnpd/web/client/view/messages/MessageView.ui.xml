@@ -1,0 +1,72 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<!-- ************************* Margins ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="10" right="10" bottom="20" left="10" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="0" right="10" bottom="0" left="10" />
+	</ui:with>
+
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="200" margins="{northMargins}"
+			floatable="true" collapsible="true" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="centerData">
+		<ui:attributes size="200" margins="{centerMargins}"
+			floatable="true" collapsible="true" />
+	</ui:with>
+	<!-- split="true" -->
+	<!-- ************************* Dialog Data ***************************************** -->
+
+	<gxt:Dialog ui:field="messageDialog" pixelSize="500, 400"
+		maximizable="true" headingText="Messagging on your network" modal="false"
+		deferHeight="false" bodyStyle="background:#fff;" blinkModal="false">
+
+		<container:BorderLayoutContainer
+			styleName="gxtMainContainer" ui:field="container" borders="false"
+			deferHeight="false">
+
+			<container:north layoutData="{northData}">
+				<gxt:ContentPanel headingText="Message:" resize="true"
+					ui:field="incomingTextPanel" hideCollapseTool="true"
+					toolTip="Message sent by a user to you." bodyBorder="true">
+
+					<form:HtmlEditor ui:field="incomingText"
+						enableFormat="true" enableAlignments="true" enableFont="true"
+						enableColors="true" enableLinks="false" enableFontSize="true"
+						enableLists="false" allowTextSelection="false" />
+				</gxt:ContentPanel>
+
+			</container:north>
+
+			<container:center layoutData="{centerData}">
+						
+					<gxt:ContentPanel shadow="true" resize="true" ui:field="outcomingTextPanel"
+						hideCollapseTool="true" headingText="Write your response :"
+						toolTip="Message sent by you to another user." bodyBorder="true">
+
+						<form:HtmlEditor ui:field="sendingText" />
+
+					</gxt:ContentPanel>
+		
+			</container:center>
+
+		</container:BorderLayoutContainer>
+
+	</gxt:Dialog>
+
+</ui:UiBinder>

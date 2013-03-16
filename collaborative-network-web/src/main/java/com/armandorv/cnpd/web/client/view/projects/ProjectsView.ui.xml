@@ -1,0 +1,55 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:projects="urn:import:com.armandorv.cnpd.web.client.view.projects"
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client">
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="newProjectTabConfig">
+		<ui:attributes text="New Projects" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="projectsTabConfig">
+		<ui:attributes text="Projects" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="projectInvitationsTabConfig">
+		<ui:attributes text="Invations" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="searchTabConfig">
+		<ui:attributes text="Find Projects" />
+	</ui:with>
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		pixelSize="600, 300" addStyleNames="margin-10" resize="true"
+		deferHeight="false">
+
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="30"
+			deferHeight="false" resizeTabs="true" tabWidth="140" shadow="true"
+			addStyleNames="margin-10">
+
+			<tabs:child config="{projectsTabConfig}">
+				<projects:ProjectsListView ui:field="projectsListView" />
+			</tabs:child>
+
+			<tabs:child config="{projectInvitationsTabConfig}">
+				<projects:ProjectInvitationsView
+					ui:field="projectInvitationsView" />
+			</tabs:child>
+
+			<tabs:child config="{searchTabConfig}">
+				<projects:FindProjectsView ui:field="findProjectsView" />
+			</tabs:child>
+
+			<tabs:child config="{newProjectTabConfig}">
+				<projects:NewProjectView ui:field="newProjectView" />
+			</tabs:child>
+
+		</tabs:TabPanel>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder>

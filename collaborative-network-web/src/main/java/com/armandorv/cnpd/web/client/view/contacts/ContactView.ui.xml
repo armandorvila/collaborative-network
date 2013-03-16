@@ -1,0 +1,172 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid"
+	xmlns:info="urn:import:com.armandorv.cnpd.web.client.view.info">
+
+	<ui:style>
+		.sep {
+			margin-top: 20px;
+		}
+	</ui:style>
+
+	<!-- ************************* Margins ***************************************** -->
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+		<ui:attributes top="0" right="0" bottom="0" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="westMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="0" right="10" bottom="10" left="10" />
+	</ui:with>
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="outerData">
+		<ui:attributes margins="{outerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="50" margins="{northMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="westData">
+		<ui:attributes size="300" margins="{westMargins}"
+			floatable="true" split="true" collapsible="true" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="centerData">
+		<ui:attributes margins="{centerMargins}" />
+	</ui:with>
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="contactsTabConfig">
+		<ui:attributes text="Contacts" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="projectsTabConfig">
+		<ui:attributes text="Projects" />
+	</ui:with>
+
+	<!-- ************************* Grids data ************************* -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="contactsColumnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="contactsStore" />
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="contactsView">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel"
+		field="projectsColumnModel" />
+
+	<ui:with type="com.sencha.gxt.data.shared.ListStore" field="projectsStore" />
+
+	<ui:with type="com.sencha.gxt.widget.core.client.grid.GridView"
+		field="projectsView">
+		<ui:attributes stripeRows="true" forceFit="true" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="middleData">
+		<ui:attributes width="1" height="1" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="bottomData">
+		<ui:attributes width="1" height="-1" />
+	</ui:with>
+
+	<!-- ************************* Border Layout ***************************************** -->
+
+	<!-- Project Window -->
+	<gxt:Window ui:field="contactWindow" pixelSize="1000,500"
+		modal="true" blinkModal="true" deferHeight="false" borders="false"
+		headingText="Contact View" bodyBorder="false" minimizable="false"
+		maximizable="true">
+
+		<container:SimpleContainer>
+			<container:child layoutData="{outerData}">
+				<container:BorderLayoutContainer
+					ui:field="container" borders="false">
+
+					<container:north layoutData="{northData}">
+						<gxt:ContentPanel resize="false" headerVisible="false">
+
+						</gxt:ContentPanel>
+					</container:north>
+
+					<container:west layoutData="{westData}">
+						<gxt:ContentPanel headingText="Contact Summary"
+							collapsible="true">
+								<info:InfoPanelView ui:field="personalInfo"/>
+						</gxt:ContentPanel>
+					</container:west>
+
+					<container:center layoutData="{centerData}">
+						<tabs:TabPanel ui:field="tabPanel" pixelSize="450, 250"
+							addStyleNames="margin-10">
+							<!-- ******************* Projects Tab ************************** -->
+							<tabs:child config="{projectsTabConfig}">
+								<gxt:ContentPanel headerVisible="false">
+									<container:VerticalLayoutContainer
+										borders="true">
+
+										<container:child layoutData="{middleData}">
+											<grid:Grid ui:field="projectsGrid" cm="{projectsColumnModel}"
+												store="{projectsStore}" view="{projectsView}" loadMask="true"
+												columnReordering="true" borders="false">
+											</grid:Grid>
+
+										</container:child>
+
+									</container:VerticalLayoutContainer>
+								</gxt:ContentPanel>
+							</tabs:child>
+							
+							
+							<!-- ******************* Contacts Tab ************************** -->
+						
+							<tabs:child config="{contactsTabConfig}">
+								<gxt:ContentPanel headerVisible="false">
+									<container:VerticalLayoutContainer
+										borders="true">
+
+										<container:child layoutData="{middleData}">
+											<grid:Grid ui:field="contactsGrid" cm="{contactsColumnModel}"
+												store="{contactsStore}" view="{contactsView}" loadMask="true"
+												columnReordering="true" borders="false">
+											</grid:Grid>
+
+										</container:child>
+
+									</container:VerticalLayoutContainer>
+								</gxt:ContentPanel>
+							</tabs:child>
+
+						</tabs:TabPanel>
+					</container:center>
+
+				</container:BorderLayoutContainer>
+			</container:child>
+		</container:SimpleContainer>
+	</gxt:Window>
+
+</ui:UiBinder>

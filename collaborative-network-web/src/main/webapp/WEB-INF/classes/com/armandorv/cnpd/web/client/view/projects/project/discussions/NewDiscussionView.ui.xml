@@ -1,0 +1,155 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+	<ui:style>
+		.rigth {
+			float: right;
+		}
+	</ui:style>
+
+	<!-- ****************** Details Data ******************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="detailsMargins">
+		<ui:attributes top="10" right="10" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="detailsData">
+		<ui:attributes width="1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+	<!-- ****************** Options Data ******************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="optionsMargins">
+		<ui:attributes top="10" right="10" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="optionsData">
+		<ui:attributes width="1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+	<!-- ****************** Button Data ******************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="buttonMargins">
+		<ui:attributes top="10" right="75" bottom="20" left="0" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="buttonData">
+		<ui:attributes width="1" height="-1" margins="{buttonMargins}" />
+	</ui:with>
+
+	<!-- ****************** Fields Data ******************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="verticalMargins">
+		<ui:attributes top="12" right="12" bottom="12" left="12" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalData">
+		<ui:attributes width="1" height="-1" margins="{verticalMargins}" />
+	</ui:with>
+
+
+	<gxt:ContentPanel bodyBorder="false" headerVisible="false"
+		borders="false">
+		<container:VerticalLayoutContainer>
+
+			<!-- ****************** Details ******************** -->
+
+			<container:child layoutData="{detailsData}">
+
+				<form:FieldSet headingText="Details ">
+					<container:VerticalLayoutContainer>
+
+						<container:child layoutData="{verticalData}">
+							<form:FieldLabel text="Title ">
+								<form:widget>
+									<form:TextField ui:field="title"  />
+								</form:widget>
+							</form:FieldLabel>
+						</container:child>
+
+						<container:child layoutData="{verticalData}">
+							<form:FieldLabel text="Description ">
+								<form:widget>
+									<form:TextArea ui:field="description"/>
+								</form:widget>
+							</form:FieldLabel>
+
+						</container:child>
+					</container:VerticalLayoutContainer>
+				</form:FieldSet>
+			</container:child>
+
+			<!-- ****************** Options ******************** -->
+
+			<container:child layoutData="{optionsData}">
+
+				<form:FieldSet headingText="Options ">
+
+					<container:VerticalLayoutContainer>
+						<container:child layoutData="{verticalData}">
+
+							<g:HorizontalPanel>
+								
+								<form:FieldLabel text="Add options ">
+									<form:widget>
+										<form:TextField ui:field="option" width="200" />
+									</form:widget>
+								</form:FieldLabel>
+								
+								<button:TextButton ui:field="newOptionButton"
+									text="Add" width="80" />
+
+							</g:HorizontalPanel>
+
+						</container:child>
+
+						<container:child layoutData="{verticalData}">
+							
+							<g:HorizontalPanel>
+							
+							<form:FieldLabel text="Options ">
+								<form:widget>
+									<form:ComboBox ui:field="optionsCombo" width="200" forceSelection="true" triggerAction="ALL"/>
+								</form:widget>
+							</form:FieldLabel>
+							
+							<button:TextButton ui:field="deleteOptionButton"
+								width="80" text="Delete" />
+							
+							</g:HorizontalPanel>
+							
+						</container:child>
+
+					</container:VerticalLayoutContainer>
+
+				</form:FieldSet>
+
+			</container:child>
+
+			<container:child layoutData="{buttonData}">
+				<g:FlowPanel>
+					<button:TextButton text="Create" ui:field="create"
+						styleName="{style.rigth}" width="80"
+						toolTip="Create a new discussion with specified information." />
+				</g:FlowPanel>
+			</container:child>
+			<container:child layoutData="{buttonData}">
+				<g:Label/>
+			</container:child>
+		</container:VerticalLayoutContainer>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder> 

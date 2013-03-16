@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>cnpd-web</name>
+	<groupId>com.armandorv.cnpd</groupId>
+	<artifactId>collaborative-network-web</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>org.jboss.errai</groupId>
+		<artifactId>cdi-integration-parent</artifactId>
+		<version>2.0.0.Final</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+
+	<properties>
+		<errai.version>2.0.0.Final</errai.version>
+		<gwt.compile.skip>true</gwt.compile.skip>
+		<web.tier.ip>localhost</web.tier.ip>
+		<web.tier.port>8080</web.tier.port>
+		<web.tier.management-port>9999</web.tier.management-port>
+		<maven.central.deploy.skip>true</maven.central.deploy.skip>
+	</properties>
+
+	<!-- For arquillian testing -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.0.0.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<!-- ************** Business tier ************** -->
+		<dependency>
+			<artifactId>collaborative-network-business-ejb-view</artifactId>
+			<groupId>com.armandorv.cnpd</groupId>
+			<version>0.8.0-ALPHA</version>
+		</dependency>
+
+		<!-- ************** GWT advanced calendar ************** -->
+		<dependency>
+			<groupId>com.bradrydzewski</groupId>
+			<artifactId>gwt-cal</artifactId>
+			<version>0.9.3.1</version>
+		</dependency>
+
+		<!-- ************** SMACK ***************************** -->
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smack</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smackx</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<!-- ************** SVN KIT (declared as module)************ -->
+		<dependency>
+			<groupId>org.tmatesoft.svnkit</groupId>
+			<artifactId>svnkit</artifactId>
+			<version>1.7.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ************** File Upload ***************************** -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- ************* Google Data Apis ********************* -->
+		<dependency>
+			<groupId>com.google.gdata</groupId>
+			<artifactId>gdata-core-1.0</artifactId>
+			<version>1.36.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>google-collections</artifactId>
+					<groupId>com.google.collections</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gdata</groupId>
+			<artifactId>gdata-client-1.0</artifactId>
+			<version>1.36.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gdata</groupId>
+			<artifactId>gdata-contacts-3.0</artifactId>
+			<version>1.36.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gdata</groupId>
+			<artifactId>gdata-docs-3.0</artifactId>
+			<version>1.36.0</version>
+		</dependency>
+
+		<!-- ************* Spring security ********************* -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.0.6.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<!-- ******************************************************* -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+			<version>1.0.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+			<version>1.0-SP4</version>
+		</dependency>
+
+		<!-- ************** Errai Core ************* -->
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-bus</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.inject</groupId>
+					<artifactId>javax.inject</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.annotation</groupId>
+					<artifactId>jsr250-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-ioc</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.inject</groupId>
+					<artifactId>javax.inject</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.annotation</groupId>
+					<artifactId>jsr250-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-tools</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mvel</groupId>
+			<artifactId>mvel2</artifactId>
+		</dependency>
+
+		<!-- ************ CDI Integration Modules ************ -->
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-cdi-client</artifactId>
+			<version>${errai.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-javax-enterprise</artifactId>
+			<version>${errai.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-weld-integration</artifactId>
+			<version>${errai.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-cdi-jetty</artifactId>
+			<version>${errai.version}</version>
+		</dependency>
+
+		<!-- ************ CDI Development Utils ************ -->
+		<!-- This must be placed above com.google.gwt:gwt-dev to override the Jetty 
+			that is present there -->
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-plus</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-naming</artifactId>
+		</dependency>
+
+		<!-- ************ Weld Modules ************ -->
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+		</dependency>
+
+		<!-- ************ GWT and GWT Extensions *********** -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ************ Runtime / Container dependencies ************ -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.1.1.GA</version>
+		</dependency>
+
+
+		<!-- ************* GXT dependencies ************* -->
+		<dependency>
+			<groupId>com.sencha.gxt</groupId>
+			<artifactId>gxt</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sencha.gxt</groupId>
+			<artifactId>gxt-legacy</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sencha.gxt</groupId>
+			<artifactId>gxt-chart</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sencha.gxt</groupId>
+			<artifactId>uibinder-bridge</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<!-- ************* Added for remote invocation ********* -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-ejb-client</artifactId>
+			<version>1.0.5.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.xnio</groupId>
+			<artifactId>xnio-nio</artifactId>
+			<version>3.0.0.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.marshalling</groupId>
+			<artifactId>jboss-marshalling-river</artifactId>
+			<version>1.3.10.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.sasl</groupId>
+			<artifactId>jboss-sasl</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.remoting3</groupId>
+			<artifactId>jboss-remoting</artifactId>
+			<version>3.2.3.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-6.0</artifactId>
+			<version>3.0.0.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.1</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-ejb-client-bom</artifactId>
+			<version>7.1.1.Final</version>
+			<type>pom</type>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.1.4.Final</version>
+		</dependency>
+
+		<!-- ******************************************** -->
+
+	</dependencies>
+
+
+	<profiles>
+		<!-- ******************JBoss AS7 profile**************** -->
+		<profile>
+			<id>jboss7</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<webDescriptor>jboss7</webDescriptor>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.errai</groupId>
+					<artifactId>errai-bus</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>junit</groupId>
+							<artifactId>junit</artifactId>
+						</exclusion>
+						<exclusion>
+							<artifactId>javax.inject</artifactId>
+							<groupId>javax.inject</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+
+				<dependency>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+					<version>1.0.b2</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.javassist</groupId>
+					<artifactId>javassist</artifactId>
+					<version>3.15.0-GA</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.errai</groupId>
+					<artifactId>errai-tools</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.errai</groupId>
+					<artifactId>errai-javax-enterprise</artifactId>
+					<version>${errai.version}</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<!-- Exclude development tools -->
+				<dependency>
+					<groupId>org.jboss.errai</groupId>
+					<artifactId>errai-cdi-jetty</artifactId>
+					<version>${errai.version}</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.weld.servlet</groupId>
+					<artifactId>weld-servlet</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.weld</groupId>
+					<artifactId>weld-core</artifactId>
+					<version>${weld.version}</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.weld.se</groupId>
+					<artifactId>weld-se-core</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<!-- Jetty is used for testing only -->
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty</artifactId>
+					<version>${jetty.version}</version>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-plus</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-naming</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+		</profile>
+
+		<!-- ******************JETTY profile**************** -->
+		<profile>
+			<id>jetty</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<webDescriptor>jetty</webDescriptor>
+			</properties>
+			<dependencies>
+				<!-- We need this for CDI BeanManager to work in Dev Mode -->
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-naming</artifactId>
+					<scope>compile</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<!-- ****************** Testing profile**************** -->
+		<profile>
+			<id>test</id>
+
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<skipTests>false</skipTests>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-remote</artifactId>
+					<version>7.1.1.Final</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+
+		</profile>
+
+	</profiles>
+
+	<build>
+		<finalName>cnpd-web</finalName>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+
+		<!-- **********************Plugins ****************************** -->
+		<plugins>
+
+			<!-- ************ GWT PLUGIN ************* -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<logLevel>TRACE</logLevel>
+					<extraJvmArgs>-XX:MaxPermSize=512M -Xmx1024M</extraJvmArgs>
+					<!-- -Xms256m (increment vm heap) -->
+
+					<soyc>false</soyc>
+					<hostedWebapp>src/main/webapp/</hostedWebapp>
+					<!-- <server>org.jboss.errai.cdi.server.gwt.JettyLauncher</server> -->
+
+					<!-- Jboss as7 host mode-->
+					<runTarget>http://${web.tier.ip}:${web.tier.port}/cnpd-web/App.html</runTarget>
+					<noServer>true</noServer>
+
+					<skip>${gwt.compile.skip}</skip>
+
+				</configuration>
+				<executions>
+					<execution>
+						<id>gwt-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>gwt-compile</id>
+						<goals>
+							<goal>resources</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- ************* War Plugin for custom war building *********** -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<warName>cnpd-web</warName>
+					<outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
+					<packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
+					<webResources>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/${webDescriptor}</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<!-- ************ Clean plugin for custom cleaning ************* -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>www-test/**</include>
+								<include>.gwt/**</include>
+								<include>.errai/**</include>
+								<include>src/main/webapp/collaborative_network/**</include>
+								<include>src/main/webapp/cnpd_theme/**</include>
+								<include>src/main/webapp/WEB-INF/deploy/**</include>
+								<include>src/main/webapp/WEB-INF/lib/**</include>
+								<include>src/main/webapp/WEB-INF/classes/**</include>
+								<include>**/gwt-unitCache/**</include>
+								<include>**/*.JUnit/**</include>
+								<include>monitordb.*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<!-- We do not want to deploy the .war files for demos to Maven Central. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>${maven.central.deploy.skip}</skip>
+				</configuration>
+			</plugin>
+
+			<!-- ************ JBOSSS AS7 PLUGIN ************* -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.1.1.Final</version>
+				<configuration>
+					<!-- Necessary if offset -->
+					<hostname>${web.tier.ip}</hostname>
+					<port>${web.tier.management-port}</port>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--**************** Javadoc Plugin ************ -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<doclet>org.jboss.apiviz.APIviz</doclet>
+					<docletArtifact>
+						<groupId>org.jboss.apiviz</groupId>
+						<artifactId>apiviz</artifactId>
+						<version>1.3.1.GA</version>
+					</docletArtifact>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<breakiterator>true</breakiterator>
+					<version>true</version>
+					<author>true</author>
+					<keywords>true</keywords>
+					<additionalparam> -sourceclasspath ${project.build.outputDirectory}
+					</additionalparam>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+		<!-- ***************** Plugin Management***************** -->
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[1.2.1,)</versionRange>
+										<goals>
+											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<reporting>
+		<outputDirectory>doc</outputDirectory>
+	</reporting>
+
+	<!-- ***************** Repositories***************** -->
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<!-- Added for APIviz -->
+		<repository>
+			<id>jboss.releases</id>
+			<name>JBoss releases</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- Added for GXT -->
+		<repository>
+			<id>sencha-gpl-release</id>
+			<name>Open source licensed Sencha artifacts</name>
+			<url>https://maven.sencha.com/repo/gpl-release/</url>
+		</repository>
+
+		<!-- Added for GData APIS -->
+		<repository>
+			<id>mandubian-mvn</id>
+			<url>http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository</url>
+		</repository>
+
+	</repositories>
+
+	<!-- **************Plugin respositories*************** -->
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- ************ DistributionManagement ************** -->
+	<distributionManagement>
+		<repository>
+			<id>jboss-releases-repository</id>
+			<name>JBoss Releases Repository</name>
+			<url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>jboss-snapshots-repository</id>
+			<name>JBoss Snapshots Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

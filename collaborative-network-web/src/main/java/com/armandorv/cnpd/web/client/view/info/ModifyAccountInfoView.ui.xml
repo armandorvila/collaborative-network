@@ -1,0 +1,79 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="textFieldMargins">
+		<ui:attributes top="30" right="10" bottom="0" left="10" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
+		<ui:attributes width="1" height="-1" margins="{textFieldMargins}" />
+	</ui:with>
+
+	<gxt:Window headingText="Modify Account Information :" resize="false" resizable="false" ui:field="window" modal="true"
+		height="500" width="400">
+
+		<form:FieldSet ui:field="personalFieldSet" headingText="Information :">
+			<container:VerticalLayoutContainer>
+
+				<container:child layoutData="{verticalLayoutData}">
+					
+					<form:FieldLabel text="Username">
+						<form:widget>
+							<form:TextField ui:field="username" />
+						</form:widget>
+					</form:FieldLabel>
+					
+				</container:child>
+				
+				<container:child layoutData="{verticalLayoutData}">
+					
+					<form:FieldLabel text="Current password ">
+						<form:widget>
+							<form:PasswordField ui:field="currentPassword" />
+						</form:widget>
+					</form:FieldLabel>
+					
+				</container:child>
+							
+				<container:child layoutData="{verticalLayoutData}">
+					
+					<form:FieldLabel text="New password ">
+						<form:widget>
+							<form:PasswordField ui:field="newPassword" />
+						</form:widget>
+					</form:FieldLabel>
+					
+				</container:child>
+				
+				<container:child layoutData="{verticalLayoutData}">
+					
+					<form:FieldLabel text="Confirm new password ">
+						<form:widget>
+							<form:PasswordField ui:field="newPasswordConfirmation" />
+						</form:widget>
+					</form:FieldLabel>
+					
+				</container:child>
+				
+			</container:VerticalLayoutContainer>
+
+		</form:FieldSet>
+
+		<gxt:button>
+			<button:TextButton text="Save" ui:field="saveButton" />
+		</gxt:button>
+
+		<gxt:button>
+			<button:TextButton text="Cancel" ui:field="cancelButton" />
+		</gxt:button>
+
+	</gxt:Window>
+
+</ui:UiBinder>

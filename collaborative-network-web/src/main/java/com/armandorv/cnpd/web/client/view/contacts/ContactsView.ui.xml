@@ -1,0 +1,60 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	xmlns:row="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:contacts="urn:import:com.armandorv.cnpd.web.client.view.contacts">
+
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="contactsTabConfig">
+		<ui:attributes text="Contacts list" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="requestsTabConfig">
+		<ui:attributes text="Contact requests" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="searchTabConfig">
+		<ui:attributes text="Find users" />
+	</ui:with>
+
+	<!-- ****************************************************************** -->
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false"
+		deferHeight="false" pixelSize="600, 300" collapsible="false"
+		addStyleNames="margin-10" resize="true">
+
+		<!-- ******** A second Tab Panel inside contacts section*********** -->
+
+		<tabs:TabPanel ui:field="tabPanel" tabMargin="30"
+			deferHeight="false" resizeTabs="true" tabWidth="140" shadow="true"
+			addStyleNames="margin-10">
+
+			<!-- *************** Contacts Tab ******************** -->
+			<tabs:child config="{contactsTabConfig}">
+				<contacts:ContactsListView ui:field="contacts" />
+			</tabs:child>
+
+			<!-- *************** Requests Tab ******************** -->
+			<tabs:child config="{requestsTabConfig}">
+				<contacts:ContactRequestsView
+					ui:field="requests" />
+
+			</tabs:child>
+
+			<!-- *************** Search Tab ******************** -->
+			<tabs:child config="{searchTabConfig}">
+				<contacts:FindUsersView ui:field="search" />
+			</tabs:child>
+
+		</tabs:TabPanel>
+
+	</gxt:ContentPanel>
+
+
+</ui:UiBinder>

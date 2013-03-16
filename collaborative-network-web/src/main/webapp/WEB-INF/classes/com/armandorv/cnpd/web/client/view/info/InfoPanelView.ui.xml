@@ -1,0 +1,86 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+
+	<ui:style>
+		.border {
+			border: 1px solid #99BBE8;
+		}
+	</ui:style>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="buttonMargins">
+		<ui:attributes top="10" right="0" bottom="10" left="18" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="buttonData">
+		<ui:attributes width="-1" height="-1" margins="{buttonMargins}" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance"
+		field="contentPanelAppearance" />
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer.AccordionLayoutAppearance"
+		field="accordionLayoutAppearance" />
+
+
+	<container:AccordionLayoutContainer
+		ui:field="accordion" expandMode="SINGLE_FILL" styleName="info_panel">
+
+		<gxt:ContentPanel ui:field="personalInfoPanel"
+			animCollapse="false" headingText="Personal Information">
+
+			<g:ScrollPanel>
+				<form:FieldSet ui:field="personal" headingText="Information :"
+					height="300" width="100">
+
+				</form:FieldSet>
+			</g:ScrollPanel>
+
+		</gxt:ContentPanel>
+
+		<gxt:ContentPanel ui:field="academicInfoPanel"
+			animCollapse="false" bodyStyleName="pad-text" headingText="Academic Information">
+			<g:ScrollPanel>
+				<form:FieldSet ui:field="degrees" headingText="Degrees :"
+					height="300" width="60">
+
+				</form:FieldSet>
+			</g:ScrollPanel>
+		</gxt:ContentPanel>
+
+		<gxt:ContentPanel ui:field="professionalInfoPanel"
+			animCollapse="false" bodyStyleName="pad-text" headingText="Profesional Information">
+			<g:ScrollPanel>
+				<form:FieldSet ui:field="jobs" headingText="Jobs :"
+					height="300" width="60">
+
+				</form:FieldSet>
+			</g:ScrollPanel>
+		</gxt:ContentPanel>
+
+		<gxt:ContentPanel bodyStyleName="pad-text" ui:field="managment"
+			headingText="Profile Managment" >
+
+			<g:ScrollPanel>
+			
+					<container:VerticalLayoutContainer>
+						<container:child layoutData="{buttonData}">
+							<tree:Tree ui:field="tree" toolTip="doble-click on desired option"/>
+						</container:child>
+
+					</container:VerticalLayoutContainer>
+			
+			</g:ScrollPanel>
+		
+		</gxt:ContentPanel>
+	</container:AccordionLayoutContainer>
+
+
+</ui:UiBinder>

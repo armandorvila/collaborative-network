@@ -1,0 +1,72 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client">
+	
+	<ui:style>
+		.rigth {
+			float:right;
+		}
+	</ui:style>
+
+	<!-- ********************** Layouts Data ************************** -->
+
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins">
+		<ui:attributes top="20" right="50" bottom="10" left="30" />
+	</ui:with>
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
+		<ui:attributes width="1" height="-1" margins="{margins}" />
+	</ui:with>
+
+
+	<!-- Widget -->
+
+	<gxt:ContentPanel ui:field="panel" headerVisible="false" addStyleNames="margin-10" resize="true"
+		deferHeight="false">
+
+		<container:VerticalLayoutContainer>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Knowldege area ">
+					<form:widget>
+						<form:ComboBox ui:field="combo" 
+							forceSelection="true" triggerAction="ALL" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Title ">
+					<form:widget>
+						<form:TextField ui:field="title" toolTip="Title of new project." />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Description ">
+					<form:widget>
+						<form:TextArea ui:field="description" height="100"
+							toolTip="Desription of the new project." />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<g:FlowPanel>
+					<button:TextButton text="Create" ui:field="createButton" styleName="{style.rigth}"
+						toolTip="Create a new project with specific information." />
+				</g:FlowPanel>
+			</container:child>
+			
+			
+
+		</container:VerticalLayoutContainer>
+
+	</gxt:ContentPanel>
+
+</ui:UiBinder>

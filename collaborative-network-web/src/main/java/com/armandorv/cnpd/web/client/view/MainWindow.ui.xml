@@ -1,0 +1,177 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:chat="urn:import:com.armandorv.cnpd.web.client.view.chat"
+	xmlns:info="urn:import:com.armandorv.cnpd.web.client.view.info"
+	xmlns:notifications="urn:import:com.armandorv.cnpd.web.client.view.notifications"
+	xmlns:contacts="urn:import:com.armandorv.cnpd.web.client.view.contacts"
+	xmlns:messages="urn:import:com.armandorv.cnpd.web.client.view.messages"
+	xmlns:projects="urn:import:com.armandorv.cnpd.web.client.view.projects"
+	xmlns:meetings="urn:import:com.armandorv.cnpd.web.client.view.meetings"
+	xmlns:a="urn:import:com.google.gwt.dev.asm" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+	<ui:style>
+		.sep {
+			margin-top: 20px;
+		}
+	</ui:style>
+
+	<!-- ************************* Margins ***************************************** -->
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+		<ui:attributes top="20" right="20" bottom="20" left="20" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+		<ui:attributes top="0" right="0" bottom="10" left="0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="westMargins">
+		<ui:attributes top="10" right="20" bottom="20" left="5" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+		<ui:attributes top="10" right="10" bottom="10" left="10" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="eastMargins">
+		<ui:attributes top="10" right="5" bottom="10" left="20" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="southMargins">
+		<ui:attributes top="10" right="0" bottom="0" left="0" />
+	</ui:with>
+
+
+	<!-- ************************* Layout Data ***************************************** -->
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="outerData">
+		<ui:attributes margins="{outerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="northData">
+		<ui:attributes size="80" margins="{northMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="westData">
+		<ui:attributes size="300" margins="{westMargins}"
+			collapsible="true" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData"
+		field="centerData">
+		<ui:attributes margins="{centerMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="eastData">
+		<ui:attributes size="300" margins="{eastMargins}" />
+	</ui:with>
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
+		field="southData">
+		<ui:attributes size="40" margins="{southMargins}" />
+	</ui:with>
+
+	<!-- ************************* Tabs Config ***************************************** -->
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="newsTabConfig">
+		<ui:attributes text="Notifications" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="messagesTabConfig">
+		<ui:attributes text="Messages" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="contactsTabConfig">
+		<ui:attributes text="Contacts" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="projectsTabConfig">
+		<ui:attributes text="Projects" />
+	</ui:with>
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig"
+		field="meetingsTabConfig">
+		<ui:attributes text="Meetings" />
+	</ui:with>
+
+	<!-- ************************* Border Layout ***************************************** -->
+
+	<container:SimpleContainer deferHeight="false">
+		<container:child layoutData="{outerData}">
+			<container:BorderLayoutContainer
+				styleName="gxtMainContainer" ui:field="container" borders="true"
+				shadow="true" deferHeight="false">
+
+				<container:north layoutData="{northData}">
+					<g:HTMLPanel styleName="header">
+						<h1 id="headerText"> Collaborative Network For Project Development</h1>
+						<span>
+							<a href="logout"
+								style="float:right;color:white;font-weight:bold;
+								margin-right:2%;margin-top:-4%;font-size:small;">Logout</a>
+						</span>
+					</g:HTMLPanel>
+				</container:north>
+
+				<container:west layoutData="{westData}">
+
+					<gxt:ContentPanel collapsible="false" resize="true"
+						hideCollapseTool="true">
+						<info:InfoPanelView ui:field="infoPanel" />
+					</gxt:ContentPanel>
+				</container:west>
+
+				<container:center layoutData="{centerData}">
+
+					<tabs:TabPanel ui:field="tabPanel" tabMargin="20"
+						resizeTabs="true" tabWidth="140" shadow="true" addStyleNames="margin-10">
+
+						<tabs:child config="{newsTabConfig}">
+							<notifications:NotificationsView
+								ui:field="news" />
+						</tabs:child>
+
+						<tabs:child config="{messagesTabConfig}">
+							<messages:MessagesView ui:field="messages" />
+						</tabs:child>
+
+						<tabs:child config="{contactsTabConfig}">
+							<contacts:ContactsView ui:field="contacts" />
+						</tabs:child>
+						
+						<tabs:child config="{meetingsTabConfig}">
+							<meetings:MeetingsView ui:field="meetings" />
+						</tabs:child>
+
+						<tabs:child config="{projectsTabConfig}">
+							<projects:ProjectsView ui:field="projects" />
+						</tabs:child>
+
+					</tabs:TabPanel>
+
+				</container:center>
+
+				<container:east layoutData="{eastData}">
+					<gxt:ContentPanel headingText="Chat with your network"
+						bodyBorder="true" borders="true" ui:field="chatPanel">
+
+						<chat:ChatView ui:field="chat" />
+
+						<gxt:button>
+							<button:TextButton text="Diconnect" ui:field="disconnectButton"/>
+						</gxt:button>
+					
+					</gxt:ContentPanel>
+				
+				</container:east>
+
+				<container:south layoutData="{southData}">
+					<g:HTMLPanel styleName="footer" />
+				</container:south>
+
+			</container:BorderLayoutContainer>
+		</container:child>
+	</container:SimpleContainer>
+
+</ui:UiBinder>

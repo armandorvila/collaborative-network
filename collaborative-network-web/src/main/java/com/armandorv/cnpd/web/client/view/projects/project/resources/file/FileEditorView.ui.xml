@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+
+	<gxt:Window ui:field="window" headingText="File editor"
+		modal="true" addStyleNames="margin-10" resize="true" resizable="false"
+		height="500" width="1000">
+		
+		<gxt:ContentPanel resize="true" headerVisible="false">
+			<form:TextArea ui:field="text" />
+		</gxt:ContentPanel>
+		
+		<gxt:button>
+			<button:TextButton text="Save" ui:field="save"/>
+		</gxt:button>
+		
+		<gxt:button>
+			<button:TextButton text="Cancel" ui:field="cancel" />
+		</gxt:button>
+
+	</gxt:Window>
+
+</ui:UiBinder> 

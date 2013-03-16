@@ -1,0 +1,148 @@
+/* LOGIN */
+body {
+	background: #fff;
+	margin-top:2%;
+	margin-right:2%;
+	margin-left: 2%;
+	 
+}
+
+/* ***************** Header styles******************** */
+
+#header{
+	
+	background: #1D9CC5 url("../images/heading_background.jpg") no-repeat
+		right top;
+	color: #333333;
+	text-align: left;
+	height: 10%;
+	font-size: x-large;
+	padding-left: 10%;
+	padding-top: 2%;
+	font-family: sans-serif;
+}
+
+/* ****************************************************** */
+
+
+
+
+/* **********Content styles ****************** */
+
+#content{
+	margin-top:2%;
+	background: #D3E1F1;
+	margin-bottom: 2%;
+	text-align:center;
+	height: 60%;
+}
+
+
+#left {
+	
+	float:left;
+	margin-right: 5%;
+	
+}
+
+#left .info {
+	border-left: solid 1px white;
+	/* border-right: solid 1px white; */
+	font-size: x-small;
+	padding-left: 5%;
+	margin-left: 20%;
+	margin-top: 10%;
+}
+
+#left .info p{
+	text-align: left;
+}
+
+#left .info a{
+	text-align: left;
+}
+
+#left .info h3{
+	font-size: small;
+	text-align: left;
+}
+
+#right {
+	float:left;
+	margin-left: 5%;
+	padding-left: 20%;
+	padding-top: 2%;
+	border-left: solid 1px white;
+}
+
+#right #login {
+	margin-top: 12%;
+	padding-left:5%;
+	 border-left: solid 1px white;
+	
+}
+
+#right #login p{
+	text-align: left;
+	}
+	
+#right #login h3{
+	text-align: left;
+	font-size: small;
+	}	
+	
+
+
+
+/* ****************************************************** */
+
+
+
+
+/* *************** Footer styles*********************** */
+#footer {
+	background: #1D9CC5 url("../images/heading_background.jpg") no-repeat
+		right top;
+	border-top: 1px #4FD9E0 solid;
+	border-bottom: 1px #4FD9E0 solid;
+	color: #333333;
+	text-align: left;
+	height:10%;
+	
+}
+
+/*Styles bellow are unused by the gxt version*/
+#footerText {
+	margin-top: -0.8;
+	margin-left: 40%;
+	color: #333333;
+	font-size: x-large;
+}
+
+#footer ul {
+	list-style: none;
+	margin-left: 35%;
+}
+
+#footer ul li {
+	border-left: 1px solid #DFE8F6;
+	float: left;
+	padding-right: 1em;
+	padding-left: 1em;
+	/* display: block; */
+}
+
+#footer ul li:first-child {
+	border-left: none;
+}
+
+#footer ul a {
+	color: #A7D9E0;
+}
+
+#footer ul a:hover {
+	cursor: pointer;
+	background-color: transparent;
+}
+
+/* ****************************************************** */

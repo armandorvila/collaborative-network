@@ -1,0 +1,287 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.armandorv.cnpd</groupId>
+	<artifactId>collaborative-network-client</artifactId>
+	<version>1.0.0-ALPHA</version>
+	<name>collaborative-network-client</name>
+	<description>A client application for CNPD system, with administrative functions.</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<skipTests>true</skipTests>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<artifactId>collaborative-network-business-ejb-view</artifactId>
+			<groupId>com.armandorv.cnpd</groupId>
+			<version>0.8.0-ALPHA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>1.1.8.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.swinglabs</groupId>
+			<artifactId>swingx</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jdesktop</groupId>
+			<artifactId>appframework</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- ************* Added for remote invocation -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-ejb-client</artifactId>
+			<version>1.0.5.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.xnio</groupId>
+			<artifactId>xnio-nio</artifactId>
+			<version>3.0.0.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.marshalling</groupId>
+			<artifactId>jboss-marshalling-river</artifactId>
+			<version>1.3.10.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.sasl</groupId>
+			<artifactId>jboss-sasl</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.remoting3</groupId>
+			<artifactId>jboss-remoting</artifactId>
+			<version>3.2.3.GA</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-6.0</artifactId>
+			<version>3.0.0.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.1</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-ejb-client-bom</artifactId>
+			<version>7.1.1.Final</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.1.4.Final</version>
+		</dependency>
+
+		<!-- ******************************************** -->
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<!-- mvn clean package -Drun -->
+			<id>run</id>
+
+			<activation>
+				<property>
+					<name>run</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<executions>
+							<execution>
+								<id>run</id>
+								<phase>package</phase>
+								<goals>
+									<goal>java</goal>
+								</goals>
+							</execution>
+						</executions>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<configuration>
+							<mainClass>com.armandorv.cnpd.client.Launcher</mainClass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.armandorv.cnpd.client.Launcher</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+<!-- 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.7.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.armandorv.cnpd.client.Launcher</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12</version>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<doclet>org.jboss.apiviz.APIviz</doclet>
+					<docletArtifact>
+						<groupId>org.jboss.apiviz</groupId>
+						<artifactId>apiviz</artifactId>
+						<version>1.3.1.GA</version>
+					</docletArtifact>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<breakiterator>true</breakiterator>
+					<version>true</version>
+					<author>true</author>
+					<keywords>true</keywords>
+					<additionalparam> -sourceclasspath ${project.build.outputDirectory}
+					</additionalparam>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<reporting>
+		<outputDirectory>doc</outputDirectory>
+	</reporting>
+
+	<repositories>
+
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- Added for APIviz -->
+		<repository>
+			<id>jboss.releases</id>
+			<name>JBoss releases</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- Added for GData APIS -->
+		<repository>
+			<id>mandubian-mvn</id>
+			<url>http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository</url>
+		</repository>
+
+	</repositories>
+
+</project>
